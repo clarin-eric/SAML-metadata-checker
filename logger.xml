@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%-5level: %msg%n</pattern>
+<!--
+      <charset>UTF-8</charset>
+-->
+    </encoder>
+  </appender>
+
+  <logger name="edu.internet2.middleware.security" level="info" />
+  <logger name="ch.qos.logback" level="info" />
+
+  <root level="info">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>
