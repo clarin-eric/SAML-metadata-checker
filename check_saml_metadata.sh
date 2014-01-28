@@ -1,6 +1,7 @@
 #!/bin/sh
 
 if [ -z "${JAVA_HOME}" ]; then
+    echo "JAVA_HOME was not set, trying to determine the right value..."
     JAVA_CMD=`which java`
     if [ ! -z ${JAVA_CMD} ]; then
     	# slightly hack approach for guessing java
@@ -18,10 +19,16 @@ if [ -z "${JAVA_HOME}" ]; then
             export JAVA_HOME=/usr/java/default
         fi
     fi
+    echo "Trying JAVA_HOME value: ${JAVA_HOME}"
+    echo "If this fails, set JAVA_HOME to the directory containing your bin/java"
+else
+    echo "JAVA_HOME already set, value: ${JAVA_HOME}"
 fi
+
 if [ -z "${JAVA_HOME}" ]; then
     echo "*** ERROR: cannot determine JAVA_HOME"
     echo "Please set JAVA_HOME environment variable the correct location and try again."
+    echo "Example: export JAVA_HOME=/usr/lib/jvm/java-1.7.0*/j??/ # contains bin/java..."
     exit 2
 fi
 
