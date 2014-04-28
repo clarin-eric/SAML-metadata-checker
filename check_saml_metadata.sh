@@ -5,7 +5,7 @@ if [ -z "${JAVA_HOME}" ]; then
     JAVA_CMD=`which java`
     if [ ! -z ${JAVA_CMD} ]; then
     	# slightly hack approach for guessing java
-    	JAVA_CMD=`readlink "${JAVA_CMD}"`
+    	JAVA_CMD=`readlink -f "${JAVA_CMD}"`
     	# strip java cmd
     	JAVA_CMD=`dirname "${JAVA_CMD}"`
     	# strip bin directory
