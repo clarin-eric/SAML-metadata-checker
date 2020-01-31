@@ -8,7 +8,7 @@ The script should be plug and play, so on Unix/Linux you can use:
 ```sh
 $ ./check-saml-metadata/check_saml_metadata.sh  clarin-sp-metadata.xml
 ```
-### To check all .xml file in a directory
+### To check all .xml files in a directory
 ```sh
 $ ./check-saml-metadata/check_saml_metadata.sh  <directory_path>
 ```
