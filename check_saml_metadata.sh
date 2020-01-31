@@ -66,7 +66,7 @@ main () {
         check_file ${1}
     else if [ -d "${1}" ]; then
         echo "Checking all files in directory: $(realpath ${1})"
-        FILES="${1}"/*
+        FILES="${1}"/*.xml
         for file in ${FILES}
         do
             echo "Processing file: $(realpath ${file})... "
