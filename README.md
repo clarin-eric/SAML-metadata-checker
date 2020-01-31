@@ -5,19 +5,16 @@ This script will be automatically run on every pull request for the [SPF-SPs-met
 ## To run locally
 The script should be plug and play, so on Unix/Linux you can use:
 ### To check a single file
-[source,sh]
-----
+```sh
 $ ./check-saml-metadata/check_saml_metadata.sh  clarin-sp-metadata.xml
-----
+```
 ### To check all .xml file in a directory
-[source,sh]
-----
+```sh
 $ ./check-saml-metadata/check_saml_metadata.sh  <directory_path>
-----
+```
 
 If the check_saml_metadata.sh does not guess JAVA_HOME correctly,
 please set it explictly, e.g.
-[source,sh]
-----
+```sh
 $ export JAVA_HOME=/you/path/to/jre
-----
+```
