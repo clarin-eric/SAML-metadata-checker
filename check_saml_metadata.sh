@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 check_file () {
     "${XMLSECTOOL}" --validateSchema --schemaDirectory "${SCHEMA_DIR}" \
