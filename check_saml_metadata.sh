@@ -70,11 +70,19 @@ main () {
         for file in ${FILES}
         do
             echo "Processing file: $(realpath ${file})... "
-            check_file ${file}
-            if [ $? -gt 0 ]; then
+            if ! check_file ${file}; then
                 FAILED_FILES+=( "$(basename ${file})" )
             fi
         done
+        echo "Merging all SP metadata files into a single metadata output..."
+        ((xmllint -xpath "/*[local-name()='EntitiesDescriptor' and namespace-uri()='urn:oasis:names:tc:SAML:2.0:metadata']" CI-assets/feed_wrapper.xml  | \
+            head -1; xmllint -xpath "/*[local-name()='EntityDescriptor' and namespace-uri()='urn:oasis:names:tc:SAML:2.0:metadata']" metadata/*;tail -1 CI-assets/feed_wrapper.xml) | \
+            xmllint --nsclean --format -) > aggregated_feed.xml
+        echo "Processing merged output..."
+        if ! check_file aggregated_feed.xml; then
+            FAILED_FILES+=( "Merged XML output" )
+        fi
+        rm aggregated_feed.xml
         else
             echo "Invalid input. \"${1}\" is not a file nor a directory."
             exit 1
