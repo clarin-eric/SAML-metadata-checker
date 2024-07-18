@@ -42,7 +42,7 @@ do
     # if the directory is empty, then it will return the input string
     # this is stupid, so case for it
     if [ "$i" != "${LIBS}" ] ; then
-        LOCALCLASSPATH=$LOCALCLASSPATH:"$i"
+        LOCALCLASSPATH=$LOCALCLASSPATH;"$i"
     fi
 done
 
